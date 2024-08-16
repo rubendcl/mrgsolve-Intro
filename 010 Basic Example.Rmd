@@ -1,0 +1,63 @@
+---
+title: "Basic Example"
+author: "Ruben Cabrera"
+date: "2024-08-16"
+output: 
+  github_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Basic Example
+
+Basic Example
+
+```{r, message=FALSE, warning=FALSE}
+library(mrgsolve)
+library(ggplot2)
+```
+
+## Model
+
+Pre-coded model from an internal library
+
+```{r data}
+mod <- modlib("irm2")
+mod
+
+# Intervaton for the model. We do this with an event object
+e <- ev(amt=100,ii=24,addl=3)
+
+out <- mod %>% ev(e) %>% mrgsim(end=240,delta=0.1)
+out
+
+```
+
+
+## Plot data
+
+```{r plotdata}
+plot(out)
+```
+
+## Model
+
+```{r source code}
+#$PROB
+
+#$PARAM
+```
+
+
+
+
+
+
+
+
+
+
+
